@@ -1236,6 +1236,7 @@ public class PdfViewerActivity extends AppCompatActivity {
             }
         }).start();
     }
+private void openDirectEditor() {        Intent intent = new Intent(this, MagicalPdfEditorActivity.class);        intent.putExtra("file_path", filePath);        intent.putExtra("file_name", fileName);        startActivity(intent);    }
     // ==================== ACTIVITY CALLBACKS ====================
 
     @Override
@@ -1313,6 +1314,9 @@ public class PdfViewerActivity extends AppCompatActivity {
             return true;
         } else if (id == R.id.action_convert_to_word) {
             convertToWord();
+            return true;
+        } else if (id == R.id.action_direct_edit) {
+            openDirectEditor();
             return true;
         } else if (id == R.id.action_share) {
             shareDocument();

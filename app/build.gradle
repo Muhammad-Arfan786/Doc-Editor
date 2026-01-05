@@ -62,4 +62,6 @@ dependencies {
 
     // MultiDex support
     implementation 'androidx.multidex:multidex:2.0.1'
+    // MagicalPdfEditor for direct PDF editing
+    implementation 'com.github.HamidrezaAmz:MagicalPdfEditor:1.0.11'
 }
