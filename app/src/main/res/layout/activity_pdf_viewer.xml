@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#333333"
+    tools:context=".activities.PdfViewerActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/primary"
+            app:navigationIcon="@drawable/ic_back"
+            app:navigationIconTint="@android:color/white"
+            app:titleTextColor="@android:color/white"
+            app:menu="@menu/menu_pdf_viewer" />
+
+        <!-- Search Bar -->
+        <LinearLayout
+            android:id="@+id/searchBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:background="@color/primary_dark"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/etSearch"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_search_field"
+                android:hint="@string/search_hint"
+                android:textColorHint="@android:color/darker_gray"
+                android:textColor="@android:color/black"
+                android:paddingHorizontal="12dp"
+                android:imeOptions="actionSearch"
+                android:inputType="text" />
+
+            <ImageButton
+                android:id="@+id/btnCloseSearch"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_close"
+                app:tint="@android:color/white" />
+
+        </LinearLayout>
+
+        <!-- Edit Toolbar -->
+        <HorizontalScrollView
+            android:id="@+id/editToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary_dark"
+            android:visibility="gone"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="8dp">
+
+                <!-- Pen Tool -->
+                <ImageButton
+                    android:id="@+id/btnPen"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/bg_tool_button"
+                    android:src="@drawable/ic_pen"
+                    android:padding="8dp"
+                    app:tint="@android:color/white" />
+
+                <!-- Highlighter Tool -->
+                <ImageButton
+                    android:id="@+id/btnHighlighter"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/bg_tool_button"
+                    android:src="@drawable/ic_highlighter"
+                    android:padding="8dp"
+                    app:tint="@android:color/white" />
+
+                <!-- Text Tool -->
+                <ImageButton
+                    android:id="@+id/btnText"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/bg_tool_button"
+                    android:src="@drawable/ic_text"
+                    android:padding="8dp"
+                    app:tint="@android:color/white" />
+
+                <!-- Eraser Tool -->
+                <ImageButton
+                    android:id="@+id/btnEraser"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_tool_button"
+                    android:src="@drawable/ic_eraser"
+                    android:padding="8dp"
+                    app:tint="@android:color/white" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@android:color/darker_gray" />
+
+                <!-- Color Red -->
+                <ImageButton
+                    android:id="@+id/btnColorRed"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/bg_color_button_red" />
+
+                <!-- Color Blue -->
+                <ImageButton
+                    android:id="@+id/btnColorBlue"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/bg_color_button_blue" />
+
+                <!-- Color Green -->
+                <ImageButton
+                    android:id="@+id/btnColorGreen"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/bg_color_button_green" />
+
+                <!-- Color Yellow -->
+                <ImageButton
+                    android:id="@+id/btnColorYellow"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_color_button_yellow" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@android:color/darker_gray" />
+
+                <!-- Undo -->
+                <ImageButton
+                    android:id="@+id/btnUndo"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_undo"
+                    android:padding="8dp"
+                    app:tint="@android:color/white" />
+
+                <!-- Redo -->
+                <ImageButton
+                    android:id="@+id/btnRedo"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_redo"
+                    android:padding="8dp"
+                    app:tint="@android:color/white" />
+
+                <!-- Clear -->
+                <ImageButton
+                    android:id="@+id/btnClear"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_clear"
+                    android:padding="8dp"
+                    app:tint="@android:color/white" />
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- PDF Pages with Drawing Overlay -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/pagesContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:padding="8dp" />
+
+        </androidx.core.widget.NestedScrollView>
+
+        <!-- Drawing Overlay (for edit mode) -->
+        <com.docreader.views.DrawingView
+            android:id="@+id/drawingView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+    <!-- Loading Indicator -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <!-- Bottom Navigation Bar -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="8dp">
+
+            <!-- Zoom Out -->
+            <ImageButton
+                android:id="@+id/btnZoomOut"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_zoom_out"
+                app:tint="?android:textColorPrimary" />
+
+            <!-- Zoom Label -->
+            <TextView
+                android:id="@+id/tvZoom"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="100%"
+                android:textAlignment="center"
+                android:textSize="14sp"
+                android:textColor="?android:textColorPrimary" />
+
+            <!-- Zoom In -->
+            <ImageButton
+                android:id="@+id/btnZoomIn"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_zoom_in"
+                app:tint="?android:textColorPrimary" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <!-- Previous Page -->
+            <ImageButton
+                android:id="@+id/btnPrevPage"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_chevron_left"
+                app:tint="?android:textColorPrimary" />
+
+            <!-- Page Info -->
+            <TextView
+                android:id="@+id/tvPageInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1 / 1"
+                android:textSize="14sp"
+                android:textColor="?android:textColorPrimary"
+                android:minWidth="60dp"
+                android:textAlignment="center" />
+
+            <!-- Next Page -->
+            <ImageButton
+                android:id="@+id/btnNextPage"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_chevron_right"
+                app:tint="?android:textColorPrimary" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Save Edit FAB (visible in edit mode) -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabSaveEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:layout_marginBottom="88dp"
+        android:src="@drawable/ic_save"
+        android:visibility="gone"
+        app:tint="@android:color/white" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

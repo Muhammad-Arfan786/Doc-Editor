@@ -1,0 +1,15 @@
+{
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.project.sourcePaths": [
+        "app/src/main/java"
+    ],
+    "java.project.referencedLibraries": [
+        "app/libs/**/*.jar"
+    ],
+    "editor.formatOnSave": true,
+    "files.exclude": {
+        "**/.gradle": true,
+        "**/build": true,
+        "**/.idea": true
+    }
+}

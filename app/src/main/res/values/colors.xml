@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#1976D2</color>
+    <color name="primary_dark">#1565C0</color>
+    <color name="primary_light">#42A5F5</color>
+    <color name="accent">#FF5722</color>
+
+    <color name="background_light">#FAFAFA</color>
+    <color name="surface_light">#FFFFFF</color>
+    <color name="text_primary_light">#212121</color>
+    <color name="text_secondary_light">#757575</color>
+
+    <color name="background_dark">#121212</color>
+    <color name="surface_dark">#1E1E1E</color>
+    <color name="text_primary_dark">#FFFFFF</color>
+    <color name="text_secondary_dark">#B3B3B3</color>
+
+    <color name="card_background_light">#FFFFFF</color>
+    <color name="card_background_dark">#2D2D2D</color>
+
+    <color name="divider_light">#E0E0E0</color>
+    <color name="divider_dark">#424242</color>
+
+    <color name="pdf_color">#F44336</color>
+    <color name="doc_color">#2196F3</color>
+    <color name="docx_color">#4CAF50</color>
+</resources>
