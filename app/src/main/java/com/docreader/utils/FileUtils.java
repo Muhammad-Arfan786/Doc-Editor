@@ -123,4 +123,47 @@ public class FileUtils {
             return String.format("%.1f GB", size / (1024.0 * 1024 * 1024));
         }
     }
+
+    /**
+     * Get actual file path from URI.
+     * If the URI is a content URI, copies to cache and returns cache file path.
+     */
+    public static String getPathFromUri(Context context, Uri uri) {
+        if (uri == null) return null;
+
+        // If it's a file URI, return the path directly
+        if ("file".equalsIgnoreCase(uri.getScheme())) {
+            return uri.getPath();
+        }
+
+        // For content URIs, copy to cache
+        try {
+            String fileName = getFileName(context, uri);
+            if (fileName == null) {
+                fileName = "temp_" + System.currentTimeMillis();
+            }
+
+            File cacheFile = new File(context.getCacheDir(), fileName);
+
+            try (InputStream inputStream = context.getContentResolver().openInputStream(uri);
+                 OutputStream outputStream = new FileOutputStream(cacheFile)) {
+
+                if (inputStream == null) {
+                    return null;
+                }
+
+                byte[] buffer = new byte[4096];
+                int bytesRead;
+                while ((bytesRead = inputStream.read(buffer)) != -1) {
+                    outputStream.write(buffer, 0, bytesRead);
+                }
+            }
+
+            return cacheFile.getAbsolutePath();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

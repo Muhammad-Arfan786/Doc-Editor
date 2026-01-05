@@ -10,6 +10,13 @@
         app:showAsAction="ifRoom" />
 
     <item
+        android:id="@+id/action_draw"
+        android:icon="@drawable/ic_pen"
+        android:title="Draw/Annotate"
+        app:iconTint="@android:color/white"
+        app:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/action_edit"
         android:icon="@drawable/ic_edit"
         android:title="Edit PDF"
@@ -18,14 +25,7 @@
 
     <item
         android:id="@+id/action_add_note"
-        android:icon="@drawable/ic_annotation"
         android:title="Add Note"
-        app:iconTint="@android:color/white"
-        app:showAsAction="never" />
-
-    <item
-        android:id="@+id/action_view_notes"
-        android:title="View Notes"
         app:showAsAction="never" />
 
     <item
